@@ -1,5 +1,17 @@
 
+/**
+ * Constants for card suits
+ * 
+ * @author Antony
+ * @version 0.1
+ *
+ */
+
 public enum Suit {
+	/**
+	 * 
+	 * 
+	 */
 	
 	CLUBS ("C"),
 	DIAMONDS ("D"),
@@ -10,12 +22,14 @@ public enum Suit {
 
 	private Suit(String symbol) {
 		// TODO Auto-generated constructor stub
+		this.symbol = symbol;
 	}
 	
 	public String toString( ) {
 		
-		return null;
+		return symbol;
 	}
 	
 
 }
+

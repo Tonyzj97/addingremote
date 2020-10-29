@@ -11,7 +11,11 @@ private ArrayList<Card> cards = new ArrayList<Card>();
 		}
 	}
 	
-	
+	/**
+	 * Return size of the hand 
+	 * 
+	 * @return the size of the hand
+	 */
 	public int size() {
 		
 		return cards.size();

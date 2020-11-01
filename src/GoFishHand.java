@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -8,14 +9,16 @@ public class GoFishHand extends Hand{
 	
 	
 	HashSet<Rank> rankSet = new HashSet<Rank>();
-	HashMap<Rank,Integer> rankMap = new HashMap<Rank,Integer>();
-	ArrayList<Rank> rankList = new ArrayList<Rank>();
-	int value = 1;
+	HashMap<Rank,Integer> map = new HashMap<Rank,Integer>();
+
+	
 	public GoFishHand(Card[] cards) {
 		super(cards);
-		for(int i =0; i< cards.length; ++i) {
-			 rankList.add(cards[i].getRank());
-		 }
+		
+
+	    
+
+	   
 	}
 		
 	
@@ -35,27 +38,31 @@ public class GoFishHand extends Hand{
 		
 		
 			for(Rank rank : Rank.values()) {
-				rankMap.put(rank, value);
-				++value;
-				for(Rank r : rankList) {
-				if(rankMap.containsKey(r)) {
-					rankMap.put(r,1);
-				}
-				if(!rankMap.containsKey(r)) {
-					rankMap.put(rank, 0);
-				}
-				}
+				map.put(rank, 0);
+			}
+			for (int i = 0; i < super.size(); i++) 
+	        { 
+	            if (map.containsKey(super.getCard(i).getRank()))  
+	            { 
+	                map.put(super.getCard(i).getRank(), map.get(super.getCard(i).getRank()) + 1); 
+	            }  
+	            else
+	            { 
+	                map.put(super.getCard(i).getRank(), 1); 
+	            } 
+	        } 
+				
+				
+				
 			
 				
-			}
+			
 			
 			
 		
-		return rankMap;
+		return map;
 		
 	}
 	
 	
-	
-
 }

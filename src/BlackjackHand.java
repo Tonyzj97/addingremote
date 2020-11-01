@@ -1,10 +1,12 @@
 import java.util.HashMap;
 
-public class BlackjackHand {
+public class BlackjackHand extends Hand {
 	
 	public static HashMap<Rank, Integer> CARD_VALUES;
 	public static int MAX_VALUE = 21;
 	private int value;
+	private int aceVal;
+	
 	
 	static {
 		CARD_VALUES = new HashMap<Rank,Integer>();
@@ -22,5 +24,41 @@ public class BlackjackHand {
 			}			
 		}
 	}
-
+	
+	public BlackjackHand(Card c1, Card c2) {
+		super(new Card[] {c1,c2});
+		this.value =0;
+		addCard(c1);
+		addCard(c2);
+		
+		
+		
+		
+		
+	}
+	
+	public int getValue() {
+		return value;
+	}
+	
+	public void addCard (Card card) {
+		if(this.value < MAX_VALUE) {
+			if(card.getRank().equals(Rank.ACE)) {
+				++aceVal;
+			}
+			this.value = value+ CARD_VALUES.get(card.getRank());
+			if(value > MAX_VALUE) {
+				if(aceVal > 0) {
+					value = value - 10;
+					aceVal--;
+				}
+			}
+		}
+		
+	}
+	@Override
+	public Card playCard(int index) {
+		return null;
+	}
+	
 }

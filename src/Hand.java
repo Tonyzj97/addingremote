@@ -11,11 +11,8 @@ private ArrayList<Card> cards = new ArrayList<Card>();
 		}
 	}
 	
-	/**
-	 * Return size of the hand 
-	 * 
-	 * @return the size of the hand
-	 */
+	
+	
 	public int size() {
 		
 		return cards.size();
@@ -55,19 +52,17 @@ private ArrayList<Card> cards = new ArrayList<Card>();
 	}
 	
 	public boolean isSorted() {
-		ArrayList<Card> copy = new ArrayList<Card>();
-		copy = (ArrayList<Card>) cards.clone();
-		Collections.sort(copy);
 		
-		boolean val = copy.equals(cards);
-		if( val == true) {
-			return true;
+		for(int i = 1; i < cards.size(); ++i) {
+			if(cards.get(i-1).compareTo(cards.get(i)) > 0) {
+				return false;
+			}
 		}
-		else {
-			return false;
-		}
+		return true;
+		
 		
 	}
+	
 	
 
 }

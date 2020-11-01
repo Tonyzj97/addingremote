@@ -24,10 +24,9 @@ public class Deck {
 	}
 	
 	public Deck (Deck deck) {
-		LinkedList<Card> copy = new LinkedList<Card>();
-		copy = (LinkedList<Card>) deck.cards.clone();
 		
-		cards = (LinkedList<Card>) deck.cards.clone();
+		
+		cards = new LinkedList<Card>(deck.cards);
 	}
 	
 	public Card draw() {
